@@ -17,18 +17,6 @@
         </div>
       </div>
 
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -52,7 +40,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('logout') }}" class="nav-link">
+            <a href="{{ route('admin.serverside') }}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>Data User (Server Side)</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default-logout">
               <i class="nav-icon fas fa-power-off"></i>
               <p>Logout</p>
             </a>
@@ -63,3 +57,26 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+
+<div class="modal fade" id="modal-default-logout">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title">Keluar dari dashboard</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <p>Anda yakin ingin meninggalkan dashboard?</p>
+          </div>
+          <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+              <a href="{{ route('logout') }}" class="btn btn-dark">Logout</a>
+          </div>
+      </div>
+      <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

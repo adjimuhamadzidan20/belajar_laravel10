@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Belajar Laravel 10</title>
+  <title>Belajar Laravel 10 | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -113,13 +113,57 @@
 <script>
   $('#example2').DataTable({
     "paging": true,
-    "lengthChange": false,
+    "lengthChange": true,
     "searching": false,
     "ordering": true,
     "info": true,
     "autoWidth": false,
     "responsive": true,
   });
+
+  // server side
+  $(document).ready(function() {
+    loadData();
+  });
+
+  function loadData() {
+    $('#serverside').DataTable({
+      processing: true,
+      pagination: true,
+      responsive: false,
+      serverSide: true,
+      searching: false,
+      ordering: true,
+      ajax:{
+        url: "{{ route('admin.serverside') }}",
+        data: function (cari) {
+          cari.nama = $('#cari_serverside').val();
+        }
+      },
+      columns:[
+        {
+          data: 'no',
+          name: 'no'
+        },
+        {
+          data: 'nama',
+          name: 'nama'
+        },
+        {
+          data: 'email',
+          name: 'email'
+        },
+        {
+          data: 'opsi',
+          name: 'opsi'
+        },
+      ]
+    })
+
+    $('#cari_serverside').on('keyup', function () {
+      $('#serverside').DataTable().ajax.reload();
+    });
+  }
 </script>
 </body>
 </html>

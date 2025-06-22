@@ -39,29 +39,6 @@ class LoginController extends Controller
         }
     }
 
-    public function register()
-    {
-        return view('auth.register');
-    }
-    public function proses_regis(Request $request)
-    {
-        // validasi inputan
-        $request->validate([
-            'username' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6'
-        ]);
-
-        $data = [
-            'name' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ];
-
-        User::create($data);
-        return redirect()->route('login')->with('success', 'Register berhasil!');
-    }
-
     public function logout(Request $request)
     {
         Auth::logout();

@@ -4,6 +4,7 @@ use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DatatableController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RegisController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,12 +21,14 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login_proses', [LoginController::class, 'proses_login'])->name('login.proses');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/register', [LoginController::class, 'register'])->name('register');
-Route::post('/regis_proses', [LoginController::class, 'proses_regis'])->name('regis.proses');
+Route::get('/register', [RegisController::class, 'register'])->name('register');
+Route::post('/regis_proses', [RegisController::class, 'proses_regis'])->name('regis.proses');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], function () {
     Route::get('/', [BerandaController::class, 'dashboard'])->name('dashboard');
