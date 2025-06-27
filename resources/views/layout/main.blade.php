@@ -21,10 +21,6 @@
   <link rel="stylesheet" href="{{ asset('template') }}/dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{ asset('template') }}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="{{ asset('template') }}/plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="{{ asset('template') }}/plugins/summernote/summernote-bs4.min.css">
 
    <!-- DataTables -->
   <link rel="stylesheet" href="{{ asset('template') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -46,8 +42,7 @@
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
+    <strong>Belajar Laravel 10</strong> -  {{ date('Y') }}
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.2.0
     </div>
@@ -71,22 +66,10 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('template') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="{{ asset('template') }}/plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
 <script src="{{ asset('template') }}/plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<script src="{{ asset('template') }}/plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="{{ asset('template') }}/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="{{ asset('template') }}/plugins/jquery-knob/jquery.knob.min.js"></script>
-<!-- daterangepicker -->
-<script src="{{ asset('template') }}/plugins/moment/moment.min.js"></script>
-<script src="{{ asset('template') }}/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{ asset('template') }}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Summernote -->
-<script src="{{ asset('template') }}/plugins/summernote/summernote-bs4.min.js"></script>
 <!-- overlayScrollbars -->
 <script src="{{ asset('template') }}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->

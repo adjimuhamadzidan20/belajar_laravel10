@@ -69,7 +69,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $data = User::find($id);
-        return view('edit', ['user' => $data]);
+        return view('edit_user', ['user' => $data]);
     }
     // proses merubah data
     public function update(Request $request, $id)

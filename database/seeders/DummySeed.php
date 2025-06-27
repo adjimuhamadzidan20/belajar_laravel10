@@ -14,7 +14,7 @@ class DummySeed extends Seeder
      */
     public function run(): void
     {
-        for ($i = 0; $i < 496; $i++) {
+        for ($i = 0; $i < 200; $i++) {
             User::create([
                 'name' => 'pengguna' . $i,
                 'email' => 'pengguna' . $i . '@email.com',

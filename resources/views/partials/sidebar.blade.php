@@ -28,22 +28,79 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.user') }}" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
-              <p>Data User</p>
+              <p>
+                Master Data
+                <i class="right fas fa-angle-left"></i>
+              </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('admin.user') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data User</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.rumah') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Rumah</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.mobil') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Mobil</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.clientside') }}" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
-              <p>Data User (Client Side)</p>
+              <p>
+                Datatable
+                <i class="right fas fa-angle-left"></i>
+              </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('admin.clientside') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data User (Client Side)</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.serverside') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data User (Server Side)</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.serverside') }}" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
-              <p>Data User (Server Side)</p>
+              <p>
+                Import Data
+                <i class="right fas fa-angle-left"></i>
+              </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('admin.import-excel') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Import Excel (Single)</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.import-excel-multisheet') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Import Excel (Multi)</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a class="nav-link" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default-logout">
