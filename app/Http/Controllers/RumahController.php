@@ -12,7 +12,7 @@ class RumahController extends Controller
     // menampilkan data
     public function rumah(Request $request)
     {
-        $data = DB::table('rumahs');
+        $data = new Rumah();
         $cariData = $request->get('cari');
 
         // pencarian data

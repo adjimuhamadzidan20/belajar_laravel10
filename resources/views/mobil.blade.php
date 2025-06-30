@@ -61,6 +61,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Admin</th>
                                         <th>Tipe Mobil</th>
                                         <th>Tahun Pembelian</th>
                                         <th>Harga Mobil</th>
@@ -71,6 +72,7 @@
                                     @foreach ($mobil as $data)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $data->user->name }}</td>
                                         <td>{{ $data->type_mobil }}</td>
                                         <td>{{ $data->tahun_pembelian }}</td>
                                         <td>{{ $data->harga_mobil }}</td>

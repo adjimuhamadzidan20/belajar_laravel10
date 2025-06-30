@@ -61,6 +61,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Pemilik</th>
                                         <th>Tipe Rumah</th>
                                         <th>Harga Rumah</th>
                                         <th>Lokasi Rumah</th>
@@ -71,6 +72,7 @@
                                     @foreach ($rumah as $data)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $data->user->name ?? '' }}</td>
                                         <td>{{ $data->type_rumah }}</td>
                                         <td>{{ $data->harga_rumah }}</td>
                                         <td>{{ $data->lokasi_rumah }}</td>

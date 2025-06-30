@@ -35,8 +35,12 @@
                                     @csrf
                                     @method('PUT')
                                     <input type="text" name="profil_lama" value="{{ $user->image }}" hidden>
-                                    <img src="{{ asset('storage/profil_foto/'. $user->image) }}" class="img-thumbnail" alt="profil" width="150">
-                                    <div class="mb-3 mt-3">   
+
+                                    @if ($user->image)
+                                        <img src="{{ asset('storage/profil_foto/'. $user->image) }}" class="mb-3 img-thumbnail" alt="profil" width="150">
+                                    @endif
+                                   
+                                    <div class="mb-3">   
                                         <label for="exampleInputNama" class="form-label">Foto Profil</label>
                                         <input type="file" class="form-control" id="exampleInputNama" name="profil">
                                         @error('profil')

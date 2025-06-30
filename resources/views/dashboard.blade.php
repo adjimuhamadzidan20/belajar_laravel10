@@ -25,56 +25,80 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                <!-- Small boxes (Stat box) -->
-                <div class="row">
-                    <div class="col-lg-4 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-info">
-                            <div class="inner">
-                                <h3>150</h3>
+                @can('view_dashboard')
+                    <!-- Small boxes (Stat box) -->
+                    <div class="row">
+                        <div class="col-lg-4 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>150</h3>
 
-                                <p>Data User</p>
+                                    <p>Data User</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                                <a href="{{ route('admin.user') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                            <div class="icon">
-                                <i class="ion ion-stats-bars"></i>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-4 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>150</h3>
+
+                                    <p>Data Mobil</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                                <a href="{{ route('admin.mobil') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
-                            <a href="{{ route('admin.user') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-4 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>44</h3>
+
+                                    <p>Data Rumah</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                                <a href="{{ route('admin.rumah') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                    <!-- ./col -->
+                    </div>
+                @endcan
+                
+                @can('view_chart_on_dashboard')
+                    <div class="row pb-4">
+                        <div class="col">
+                            <div class="card text-center">
+                                <div class="card-header">
+                                    Featured
+                                </div>
+                                <div class="card-body ">
+                                    <center>
+                                        <h5 class="card-text mb-3">Special title treatment</h5>
+                                    </center>
+                                    <div class="row justify-content-center">
+                                        <div class="col-7 mb-4">
+                                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id tempore pariatur a voluptates voluptatibus obcaecati blanditiis. Nobis in possimus sed ratione enim, ad, ducimus magni, molestiae non labore minus tempore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, eligendi amet aperiam quaerat distinctio pariatur voluptate consequatur a facilis animi accusamus cum id libero dolorem sint illo voluptatum sit illum?</p>
+                                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id tempore pariatur a voluptates voluptatibus obcaecati blanditiis. Nobis in possimus sed ratione enim, ad, ducimus magni, molestiae non labore minus tempore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, eligendi amet aperiam quaerat distinctio pariatur voluptate consequatur a facilis animi accusamus cum id libero dolorem sint illo voluptatum sit illum?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <!-- ./col -->
-                    <div class="col-lg-4 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-info">
-                            <div class="inner">
-                                <h3>150</h3>
-
-                                <p>Data Mobil</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-stats-bars"></i>
-                            </div>
-                            <a href="{{ route('admin.mobil') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-4 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-info">
-                            <div class="inner">
-                                <h3>44</h3>
-
-                                <p>Data Rumah</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-stats-bars"></i>
-                            </div>
-                            <a href="{{ route('admin.rumah') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                <!-- ./col -->
-                </div>
-                <!-- /.row -->
+                @endcan
             </div>
             <!-- /.container-fluid -->
         </section>

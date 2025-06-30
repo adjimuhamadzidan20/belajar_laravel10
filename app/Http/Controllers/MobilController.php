@@ -12,7 +12,7 @@ class MobilController extends Controller
     // menampilkan data
     public function mobil(Request $request)
     {
-        $data = DB::table('mobils');
+        $data = new Mobil();
         $cariData = $request->get('cari');
 
         // pencarian data

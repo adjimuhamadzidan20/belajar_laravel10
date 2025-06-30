@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mobils', function (Blueprint $table) {
-            $table->id();
-            $table->integer('user_id');
-            $table->string('type_mobil');
-            $table->string('tahun_pembelian');
-            $table->integer('harga_mobil');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->datetime('deleted_at')->nullable();
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mobil');
+        Schema::table('users', function (Blueprint $table) {
+            $table->datetime('deleted_at')->nullable();
+        });
     }
 };

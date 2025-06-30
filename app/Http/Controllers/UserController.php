@@ -14,7 +14,7 @@ class UserController extends Controller
     // menampilkan data
     public function user(Request $request)
     {
-        $data = DB::table('users');
+        $data = new User();
         $cariData = $request->get('cari');
 
         // pencarian data
@@ -23,6 +23,7 @@ class UserController extends Controller
                 ->orWhere('email', 'LIKE', '%' . $cariData . '%');
         }
 
+        $users = $data->withTrashed();
         $users = $data->get();
         return view('user', compact('users', 'request'));
     }
@@ -127,5 +128,12 @@ class UserController extends Controller
             $data->delete();
         }
         return redirect()->route('admin.user')->with('success', 'User berhasil terhapus!');
+    }
+
+    // detail data
+    public function detail($id)
+    {
+        $data = User::find($id);
+        return view('detail_user', ['user' => $data]);
     }
 }

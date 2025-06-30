@@ -12,12 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rumahs', function (Blueprint $table) {
+        Schema::create('mobils', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->string('type_rumah');
-            $table->integer('harga_rumah');
-            $table->string('lokasi_rumah');
+            $table->string('type_mobil');
+            $table->string('tahun_pembelian');
+            $table->integer('harga_mobil');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rumah');
+        Schema::dropIfExists('mobils');
     }
 };

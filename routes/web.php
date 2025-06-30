@@ -8,6 +8,9 @@ use App\Http\Controllers\RegisController;
 use App\Http\Controllers\RumahController;
 use App\Http\Controllers\MobilController;
 use App\Http\Controllers\ImportController;
+use App\Http\Controllers\KtpController;
+use App\Http\Controllers\AssetController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,7 +37,8 @@ Route::get('/register', [RegisController::class, 'register'])->name('register');
 Route::post('/regis_proses', [RegisController::class, 'proses_regis'])->name('regis.proses');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], function () {
-    Route::get('/', [BerandaController::class, 'dashboard'])->name('dashboard');
+    Route::get('/', [BerandaController::class, 'dashboard'])->name('dashboard')->middleware(['role:admin|writer']);
+    Route::get('/dashboard', [BerandaController::class, 'dashboard'])->name('dashboard')->middleware(['role:admin|writer']);
 
     // halaman data user
     Route::get('/user', [UserController::class, 'user'])->name('user');
@@ -43,6 +47,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], 
     Route::get('/edit_user/{id}', [UserController::class, 'edit'])->name('user.edit');
     Route::put('/update_user/{id}', [UserController::class, 'update'])->name('user.update');
     Route::get('/delete_user/{id}', [UserController::class, 'delete'])->name('user.delete');
+    Route::get('/detail_user/{id}', [UserController::class, 'detail'])->name('user.detail');
 
     // halaman data rumah
     Route::get('/rumah', [RumahController::class, 'rumah'])->name('rumah');
@@ -59,6 +64,22 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], 
     Route::get('/edit_mobil/{id}', [MobilController::class, 'edit'])->name('mobil.edit');
     Route::put('/update_mobil/{id}', [MobilController::class, 'update'])->name('mobil.update');
     Route::get('/delete_mobil/{id}', [MobilController::class, 'delete'])->name('mobil.delete');
+
+    // halaman data ktp
+    Route::get('/ktp', [KtpController::class, 'ktp'])->name('ktp');
+    Route::get('/create_ktp', [KtpController::class, 'create'])->name('ktp.create');
+    Route::post('/store_ktp', [KtpController::class, 'store'])->name('ktp.store');
+    Route::get('/edit_ktp/{id}', [KtpController::class, 'edit'])->name('ktp.edit');
+    Route::put('/update_ktp/{id}', [KtpController::class, 'update'])->name('ktp.update');
+    Route::get('/delete_ktp/{id}', [KtpController::class, 'delete'])->name('ktp.delete');
+
+    // halaman data asset
+    Route::get('/asset', [AssetController::class, 'asset'])->name('asset');
+    Route::get('/create_asset', [AssetController::class, 'create'])->name('asset.create');
+    Route::post('/store_asset', [AssetController::class, 'store'])->name('asset.store');
+    Route::get('/edit_asset/{id}', [AssetController::class, 'edit'])->name('asset.edit');
+    Route::put('/update_asset/{id}', [AssetController::class, 'update'])->name('asset.update');
+    Route::get('/delete_asset/{id}', [AssetController::class, 'delete'])->name('asset.delete');
 
     // halaman import excel
     Route::get('/importexcel', [ImportController::class, 'importExcel'])->name('import-excel');

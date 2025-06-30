@@ -15,4 +15,10 @@ class Rumah extends Model
         'harga_rumah',
         'lokasi_rumah'
     ];
+
+    // join ke table user
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
