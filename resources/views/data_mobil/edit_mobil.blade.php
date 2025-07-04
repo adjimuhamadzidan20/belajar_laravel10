@@ -7,13 +7,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Tambah Rumah</h1>
+                        <h1 class="m-0">Edit Mobil</h1>
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Tambah Rumah</li>
+                        <li class="breadcrumb-item active">Edit Mobil</li>
                         </ol>
                     </div>
                     <!-- /.col -->
@@ -27,34 +27,38 @@
         <section class="content">
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
-                <div class="row">
+                <div class="row pb-4">
                     <div class="col">
                         <div class="card">
                             <div class="card-body">
-                                <form method="post" action="{{ route('admin.rumah.store') }}">
+                                <form method="post" action="{{ route('admin.mobil.update', ['id' => $mobil->id]) }}">
                                     @csrf
+                                    @method('PUT')
                                     <div class="mb-3">
                                         <label for="exampleInputTipe" class="form-label">Tipe Rumah</label>
-                                        <input type="text" class="form-control" id="exampleInputTipe" name="tipe" placeholder="Tipe Rumah Anda">
+                                        <input type="text" class="form-control" id="exampleInputTipe" name="tipe" placeholder="Tipe Rumah Anda" value="{{ $mobil->type_mobil }}">
                                         @error('tipe')
                                             <small>{{ $message }}</small>
                                         @enderror
                                     </div>
                                     <div class="mb-3">
+                                        <label for="exampleInputTahun" class="form-label">Tahun Pembelian</label>
+                                        <input type="text" class="form-control" id="exampleInputTahun" name="tahun" placeholder="Tahun Pembelian" value="{{ $mobil->tahun_pembelian }}">
+                                        @error('tahun')
+                                            <small>{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-4">
                                         <label for="exampleInputHarga" class="form-label">Harga</label>
-                                        <input type="text" class="form-control" id="exampleInputHarga" name="harga" placeholder="Masukkan Email">
+                                        <input type="text" class="form-control" id="exampleInputHarga" name="harga" placeholder="Harga Mobil" value="{{ $mobil->harga_mobil }}">
                                         @error('harga')
                                             <small>{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="exampleInputLokasi" class="form-label">Lokasi Rumah</label>
-                                        <input type="text" class="form-control" id="exampleInputLokasi" name="lokasi" placeholder="Lokasi Rumah Anda">
-                                        @error('lokasi')
-                                            <small>{{ $message }}</small>
-                                        @enderror
+                                    <div class="d-flex justify-content-between">
+                                        <a href="{{ route('admin.mobil') }}" class="btn btn-primary">Kembali</a>
+                                        <button type="submit" class="btn btn-primary">Edit</button>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                 </form>
                             </div>
                         </div>

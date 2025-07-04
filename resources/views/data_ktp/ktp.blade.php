@@ -7,13 +7,13 @@
             <div class="container-fluid">
                 <div class="row mb-1">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Data Users</h1>
+                        <h1 class="m-0">Data KTP</h1>
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Data User</li>
+                            <li class="breadcrumb-item active">Data KTP</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -28,7 +28,8 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row mb-3">
                     <div class="col">
-                        <a href="{{ route('admin.user.create') }}" class="btn btn-dark">Tambah</a>
+                        <a href="{{ route('admin.ktp.create') }}" class="btn btn-dark">Tambah</a>
+                        <a href="{{ route('admin.ktp') }}?export=pdf" class="btn btn-dark">Export PDF</a>
                     </div>
                 </div>
                 <div class="row">
@@ -37,10 +38,10 @@
                             <div class="card-header">
                                 <div class="row">
                                     <div class="col d-flex align-items-center">
-                                        <h3 class="card-title">Tabel data user</h3>
+                                        <h3 class="card-title">Tabel data KTP (NIK)</h3>
                                     </div>
                                     <div class="col-4">
-                                        <form action="{{ route('admin.user') }}" method="get">
+                                        <form action="{{ route('admin.ktp') }}" method="get">
                                             <div class="input-group">
                                                 <input type="text" class="form-control" placeholder="Pencarian.." name="cari" value="{{ $request->get('cari') }}">
                                                 <button class="btn btn-outline-secondary" type="submit">Cari</button>
@@ -61,44 +62,19 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama</th>
+                                        <th>Admin</th>
                                         <th>NIK</th>
-                                        <th>Email</th>
-                                        <th class="text-center">Gambar</th>
-                                        <th class="text-center">Asset</th>
-                                        <th class="text-center">Jumlah</th>
                                         <th class="text-center">Opsi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $data)
+                                    @foreach ($ktp as $data)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $data->name }}</td>
-                                        <td>{{ $data->ktp->nik ?? '' }}</td>
-                                        <td>{{ $data->email }}</td>
+                                        <td>{{ $data->user->name }}</td>
+                                        <td>{{ $data->nik }}</td>
                                         <td class="text-center">
-                                            <img src="{{ asset('storage/profil_foto/'. $data->image) }}" alt="profil" width="75" class="img-thumbnail">
-                                        </td>
-                                        <td>
-                                            @if (count($data->asset) == 0)
-                                                <ul>
-                                                    <li>Belum ada asset</li>
-                                                </ul>
-                                            @else
-                                                <ul>
-                                                    @foreach ($data->asset as $row)
-                                                        <li>{{ $row->nama_asset }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            @endif
-                                        </td>
-                                        <td class="text-center">{{ count($data->asset) }}</td>
-                                        <td class="text-center">
-                                            <a href="{{ route('admin.user.detail', ['id' => $data->id]) }}" class="btn btn-primary btn-sm">Detail</a>
-
-                                            <a href="{{ route('admin.user.edit', ['id' => $data->id]) }}" class="btn btn-primary btn-sm">Edit</a>
-
+                                            <a href="{{ route('admin.ktp.edit', ['id' => $data->id]) }}" class="btn btn-primary btn-sm">Edit</a>
                                             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default{{ $data->id }}">Delete</button>
                                         </td>
                                     </tr>
@@ -107,17 +83,17 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Hapus Data User</h4>
+                                                    <h4 class="modal-title">Hapus Data KTP</h4>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>Anda yakin ingin menghapus {{ $data->name }}?</p>
+                                                    <p>Anda yakin ingin menghapus NIK {{ $data->nik }}?</p>
                                                 </div>
                                                 <div class="modal-footer justify-content-between">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                                                    <a href="{{ route('admin.user.delete', ['id' => $data->id]) }}" class="btn btn-dark">Delete</a>
+                                                    <a href="{{ route('admin.ktp.delete', ['id' => $data->id]) }}" class="btn btn-dark">Delete</a>
                                                 </div>
                                             </div>
                                             <!-- /.modal-content -->

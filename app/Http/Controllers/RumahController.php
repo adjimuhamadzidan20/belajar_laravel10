@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Rumah;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class RumahController extends Controller
 {
@@ -22,13 +23,20 @@ class RumahController extends Controller
         }
 
         $rumah = $data->get();
-        return view('rumah', compact('rumah', 'request'));
+
+        // export pdf
+        if ($request->get('export') == 'pdf') {
+            $pdf = Pdf::loadView('pdf.data_rumah', ['rumah' => $rumah]);
+            return $pdf->download('Data_rumah.pdf');
+        }
+
+        return view('data_rumah.rumah', compact('rumah', 'request'));
     }
 
     // halaman menambah data
     public function create()
     {
-        return view('create_rumah');
+        return view('data_rumah.create_rumah');
     }
     // proses menambah data
     public function store(Request $request)
@@ -59,7 +67,7 @@ class RumahController extends Controller
     public function edit($id)
     {
         $data = Rumah::find($id);
-        return view('edit_rumah', ['rumah' => $data]);
+        return view('data_rumah.edit_rumah', ['rumah' => $data]);
     }
     // proses merubah data
     public function update(Request $request, $id)

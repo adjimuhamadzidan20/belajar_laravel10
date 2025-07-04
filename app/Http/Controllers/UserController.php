@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class UserController extends Controller
 {
@@ -25,13 +26,20 @@ class UserController extends Controller
 
         $users = $data->withTrashed();
         $users = $data->get();
-        return view('user', compact('users', 'request'));
+
+        // export pdf
+        if ($request->get('export') == 'pdf') {
+            $pdf = Pdf::loadView('pdf.data_user', ['users' => $users]);
+            return $pdf->download('Data_user.pdf');
+        }
+
+        return view('data_user.user', compact('users', 'request'));
     }
 
     // halaman menambah data
     public function create()
     {
-        return view('create_user');
+        return view('data_user.create_user');
     }
     // proses menambah data
     public function store(Request $request)
@@ -70,7 +78,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $data = User::find($id);
-        return view('edit_user', ['user' => $data]);
+        return view('data_user.edit_user', ['user' => $data]);
     }
     // proses merubah data
     public function update(Request $request, $id)
@@ -134,6 +142,6 @@ class UserController extends Controller
     public function detail($id)
     {
         $data = User::find($id);
-        return view('detail_user', ['user' => $data]);
+        return view('data_user.detail_user', ['user' => $data]);
     }
 }

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Belajar Laravel 10 | Log in</title>
+  <title>Belajar Laravel 10 | Validasi Password</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -17,7 +17,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{ route('login') }}">Belajar <b>Laravel 10</b></a>
+    <a href="{{ route('forgot') }}">Password <b>Baru</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -33,26 +33,16 @@
         </div>  
     @endif
 
-      <form action="{{ route('login.proses') }}" method="post">
+      <form action="{{ route('forgot.validasi_proses') }}" method="post">
         @csrf
+        <input type="hidden" name="token" value="{{ $token }}">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Username" name="username">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-user"></span>
+            <input type="password" class="form-control" placeholder="Password Baru Anda" name="password">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+                </div>
             </div>
-          </div>
-        </div>
-        @error('username')
-            <small>{{ $message }}</small>
-        @enderror
-        <div class="input-group mt-3">
-          <input type="password" class="form-control" placeholder="Password" name="password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
         </div>
         @error('password')
             <small>{{ $message }}</small>
@@ -60,17 +50,11 @@
         <div class="row mt-3">
           <!-- /.col -->
           <div class="col">
-            <button type="submit" class="btn btn-primary btn-block">Masuk</button>
+            <button type="submit" class="btn btn-primary btn-block">Ganti Password</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
-
-      <div class="mb-0 mt-3 text-center">
-        <a href="{{ route('forgot') }}">Lupa password?</a><br>
-        <a href="{{ route('register') }}">Daftar sebagai akun baru</a>
-      </div>
-      
     </div>
     <!-- /.login-card-body -->
   </div>

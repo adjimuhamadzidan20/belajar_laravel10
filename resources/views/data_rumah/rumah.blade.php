@@ -7,13 +7,13 @@
             <div class="container-fluid">
                 <div class="row mb-1">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Data KTP</h1>
+                        <h1 class="m-0">Data Rumah</h1>
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Data KTP</li>
+                            <li class="breadcrumb-item active">Data Rumah</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -28,7 +28,8 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row mb-3">
                     <div class="col">
-                        <a href="{{ route('admin.ktp.create') }}" class="btn btn-dark">Tambah</a>
+                        <a href="{{ route('admin.rumah.create') }}" class="btn btn-dark">Tambah</a>
+                        <a href="{{ route('admin.rumah') }}?export=pdf" class="btn btn-dark">Export PDF</a>
                     </div>
                 </div>
                 <div class="row">
@@ -37,10 +38,10 @@
                             <div class="card-header">
                                 <div class="row">
                                     <div class="col d-flex align-items-center">
-                                        <h3 class="card-title">Tabel data KTP (NIK)</h3>
+                                        <h3 class="card-title">Tabel data rumah</h3>
                                     </div>
                                     <div class="col-4">
-                                        <form action="{{ route('admin.ktp') }}" method="get">
+                                        <form action="{{ route('admin.rumah') }}" method="get">
                                             <div class="input-group">
                                                 <input type="text" class="form-control" placeholder="Pencarian.." name="cari" value="{{ $request->get('cari') }}">
                                                 <button class="btn btn-outline-secondary" type="submit">Cari</button>
@@ -61,19 +62,23 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Admin</th>
-                                        <th>NIK</th>
+                                        <th>Pemilik</th>
+                                        <th>Tipe Rumah</th>
+                                        <th>Harga Rumah</th>
+                                        <th>Lokasi Rumah</th>
                                         <th class="text-center">Opsi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($ktp as $data)
+                                    @foreach ($rumah as $data)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $data->user->name }}</td>
-                                        <td>{{ $data->nik }}</td>
+                                        <td>{{ $data->user->name ?? '' }}</td>
+                                        <td>{{ $data->type_rumah }}</td>
+                                        <td>{{ $data->harga_rumah }}</td>
+                                        <td>{{ $data->lokasi_rumah }}</td>
                                         <td class="text-center">
-                                            <a href="{{ route('admin.ktp.edit', ['id' => $data->id]) }}" class="btn btn-primary btn-sm">Edit</a>
+                                            <a href="{{ route('admin.rumah.edit', ['id' => $data->id]) }}" class="btn btn-primary btn-sm">Edit</a>
                                             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-default{{ $data->id }}">Delete</button>
                                         </td>
                                     </tr>
@@ -82,17 +87,17 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Hapus Data KTP</h4>
+                                                    <h4 class="modal-title">Hapus Data Rumah</h4>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>Anda yakin ingin menghapus NIK {{ $data->nik }}?</p>
+                                                    <p>Anda yakin ingin menghapus tipe rumah {{ $data->type_rumah }}?</p>
                                                 </div>
                                                 <div class="modal-footer justify-content-between">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                                                    <a href="{{ route('admin.ktp.delete', ['id' => $data->id]) }}" class="btn btn-dark">Delete</a>
+                                                    <a href="{{ route('admin.rumah.delete', ['id' => $data->id]) }}" class="btn btn-dark">Delete</a>
                                                 </div>
                                             </div>
                                             <!-- /.modal-content -->

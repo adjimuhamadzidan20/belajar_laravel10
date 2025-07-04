@@ -27,21 +27,24 @@
         <section class="content">
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
-                <div class="row">
+                <div class="row pb-4">
                     <div class="col">
                         <div class="card">
                             <div class="card-body">
                                 <form method="post" action="{{ route('admin.asset.update', ['id' => $asset->id]) }}">
                                     @csrf
                                     @method('PUT')
-                                    <div class="mb-3">
+                                    <div class="mb-4">
                                         <label for="exampleInputAsset" class="form-label">Nama Asset</label>
                                         <input type="text" class="form-control" id="exampleInputAsset" name="asset" value="{{ $asset->nama_asset }}">
                                         @error('asset')
                                             <small>{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="{{ route('admin.mobil') }}" class="btn btn-primary">Kembali</a>
+                                        <button type="submit" class="btn btn-primary">Edit</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

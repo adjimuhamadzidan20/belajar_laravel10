@@ -27,7 +27,7 @@
         <section class="content">
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
-                <div class="row">
+                <div class="row pb-4">
                     <div class="col">
                         <div class="card">
                             <div class="card-body">
@@ -61,14 +61,17 @@
                                             <small>{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="mb-4">
                                         <label for="exampleInputPassword" class="form-label">Password</label>
                                         <input type="password" class="form-control" id="exampleInputPassword" name="password" placeholder="Masukkan Password Baru">
                                         @error('password')
                                             <small>{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="{{ route('admin.user') }}" class="btn btn-primary">Kembali</a>
+                                        <button type="submit" class="btn btn-primary">Edit</button>
+                                    </div> 
                                 </form>
                             </div>
                         </div>

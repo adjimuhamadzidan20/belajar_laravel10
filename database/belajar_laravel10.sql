@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Jun 2025 pada 14.53
+-- Waktu pembuatan: 04 Jul 2025 pada 04.19
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.1.31
 
@@ -320,7 +320,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `image`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Adji Muhamad Zidan', 'adjimuhamadzidan@email.com', NULL, '$2y$12$mDwPRW9pocyWWzvCuP9SYOO6wafH5hQP8KNqFPTy9TrIzujW48bDS', NULL, '2025-06-29img0.jpg', '2025-06-29 07:47:21', '2025-06-29 08:07:10', NULL),
+(1, 'Adji Muhamad Zidan', 'adjimuhamadzidan@email.com', NULL, '$2y$12$KJ8txauGaJIGB1FI9L6EJeEhbbXYU5d5E8lOt.t6d53Rrdn3vf9ha', NULL, '2025-06-29img0.jpg', '2025-06-29 07:47:21', '2025-07-02 21:17:56', NULL),
 (2, 'Beyourself', 'beyourself@email.com', NULL, '$2y$12$iURxw69bmOydn9S9B6PFxO/Zo7N8OYftfgZ4i.Vyk7gGIRgLcrtja', NULL, '2025-06-29img33.jpg', '2025-06-29 07:47:22', '2025-06-29 08:07:28', NULL),
 (3, 'admin123', 'admin123@email.com', NULL, '$2y$12$tf1FVdRYtuevTNSCsNPySuMXt7obQ4xJ8pAp9ngyolMMWSJEbn.XS', NULL, '2025-06-29TouchKeyboardThemeLight000.jpg', '2025-06-29 07:47:22', '2025-06-29 08:07:55', NULL);
 

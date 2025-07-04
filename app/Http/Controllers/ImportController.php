@@ -13,13 +13,13 @@ class ImportController extends Controller
     // import excel single sheet
     public function importExcel()
     {
-        return view('importexcel');
+        return view('import_excel.importexcel');
     }
 
     // import excel multi sheet
     public function importExcelMulti()
     {
-        return view('importexcelmulti');
+        return view('import_excel.importexcelmulti');
     }
 
     // proses import excel

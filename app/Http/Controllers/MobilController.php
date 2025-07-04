@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Mobil;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class MobilController extends Controller
 {
@@ -22,13 +23,20 @@ class MobilController extends Controller
         }
 
         $mobil = $data->get();
-        return view('mobil', compact('mobil', 'request'));
+
+        // export pdf
+        if ($request->get('export') == 'pdf') {
+            $pdf = Pdf::loadView('pdf.data_mobil', ['mobil' => $mobil]);
+            return $pdf->download('Data_mobil.pdf');
+        }
+
+        return view('data_mobil.mobil', compact('mobil', 'request'));
     }
 
     // halaman menambah data
     public function create()
     {
-        return view('create_mobil');
+        return view('data_mobil.create_mobil');
     }
     // proses menambah data
     public function store(Request $request)
@@ -59,7 +67,7 @@ class MobilController extends Controller
     public function edit($id)
     {
         $data = Mobil::find($id);
-        return view('edit_mobil', ['mobil' => $data]);
+        return view('data_mobil.edit_mobil', ['mobil' => $data]);
     }
     // proses merubah data
     public function update(Request $request, $id)

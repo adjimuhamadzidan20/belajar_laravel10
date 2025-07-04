@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Ktp;
 use Illuminate\Support\Facades\Validator;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class KtpController extends Controller
 {
@@ -19,12 +20,19 @@ class KtpController extends Controller
         }
 
         $ktp = $data->get();
-        return view('ktp', ['ktp' => $ktp, 'request' => $request]);
+
+        // export pdf
+        if ($request->get('export') == 'pdf') {
+            $pdf = Pdf::loadView('pdf.data_ktp', ['ktp' => $ktp]);
+            return $pdf->download('Data_ktp.pdf');
+        }
+
+        return view('data_ktp.ktp', ['ktp' => $ktp, 'request' => $request]);
     }
 
     public function create()
     {
-        return view('create_ktp');
+        return view('data_ktp.create_ktp');
     }
 
     public function store(Request $request)
@@ -50,7 +58,7 @@ class KtpController extends Controller
     public function edit($id)
     {
         $data = Ktp::find($id);
-        return view('edit_ktp', ['ktp' => $data]);
+        return view('data_ktp.edit_ktp', ['ktp' => $data]);
     }
 
     public function update(Request $request, $id)

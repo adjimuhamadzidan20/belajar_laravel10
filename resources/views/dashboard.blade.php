@@ -12,7 +12,6 @@
                     <!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active">Beranda</li>
                         </ol>
                     </div><!-- /.col -->
@@ -28,11 +27,11 @@
                 @can('view_dashboard')
                     <!-- Small boxes (Stat box) -->
                     <div class="row">
-                        <div class="col-lg-4 col-6">
+                        <div class="col-lg-2 col-6">
                             <!-- small box -->
                             <div class="small-box bg-info">
                                 <div class="inner">
-                                    <h3>150</h3>
+                                    <h3>{{ count($user) }}</h3>
 
                                     <p>Data User</p>
                                 </div>
@@ -43,11 +42,11 @@
                             </div>
                         </div>
                         <!-- ./col -->
-                        <div class="col-lg-4 col-6">
+                        <div class="col-lg-2 col-6">
                             <!-- small box -->
                             <div class="small-box bg-info">
                                 <div class="inner">
-                                    <h3>150</h3>
+                                    <h3>{{ count($mobil) }}</h3>
 
                                     <p>Data Mobil</p>
                                 </div>
@@ -58,11 +57,11 @@
                             </div>
                         </div>
                         <!-- ./col -->
-                        <div class="col-lg-4 col-6">
+                        <div class="col-lg-2 col-6">
                             <!-- small box -->
                             <div class="small-box bg-info">
                                 <div class="inner">
-                                    <h3>44</h3>
+                                    <h3>{{ count($rumah) }}</h3>
 
                                     <p>Data Rumah</p>
                                 </div>
@@ -70,6 +69,34 @@
                                     <i class="ion ion-stats-bars"></i>
                                 </div>
                                 <a href="{{ route('admin.rumah') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>{{ count($ktp) }}</h3>
+
+                                    <p>Data KTP</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                                <a href="{{ route('admin.ktp') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>{{ count($asset) }}</h3>
+
+                                    <p>Data Asset</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                                <a href="{{ route('admin.asset') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->
@@ -81,9 +108,6 @@
                     <div class="row pb-4">
                         <div class="col">
                             <div class="card text-center">
-                                <div class="card-header">
-                                    Featured
-                                </div>
                                 <div class="card-body ">
                                     <center>
                                         <h5 class="card-text mb-3">Special title treatment</h5>

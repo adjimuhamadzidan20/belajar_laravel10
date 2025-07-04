@@ -7,13 +7,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Edit KTP</h1>
+                        <h1 class="m-0">Tambah NIK Baru</h1>
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Edit KTP</li>
+                        <li class="breadcrumb-item active">Tambah NIK</li>
                         </ol>
                     </div>
                     <!-- /.col -->
@@ -31,17 +31,19 @@
                     <div class="col">
                         <div class="card">
                             <div class="card-body">
-                                <form method="post" action="{{ route('admin.ktp.update', ['id' => $ktp->id]) }}">
+                                <form method="post" action="{{ route('admin.ktp.store') }}">
                                     @csrf
-                                    @method('PUT')
-                                    <div class="mb-3">
+                                    <div class="mb-4">
                                         <label for="exampleInputNIK" class="form-label">NIK</label>
-                                        <input type="text" class="form-control" id="exampleInputNIK" value="{{ $ktp->nik }}">
+                                        <input type="text" class="form-control" id="exampleInputNIK" name="nik" placeholder="Masukkan NIK Anda">
                                         @error('nik')
                                             <small>{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="{{ route('admin.ktp') }}" class="btn btn-primary">Kembali</a>
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

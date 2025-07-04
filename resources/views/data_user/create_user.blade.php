@@ -7,13 +7,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Edit Mobil</h1>
+                        <h1 class="m-0">Tambah User Baru</h1>
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Edit Mobil</li>
+                        <li class="breadcrumb-item active">Tambah User</li>
                         </ol>
                     </div>
                     <!-- /.col -->
@@ -31,31 +31,40 @@
                     <div class="col">
                         <div class="card">
                             <div class="card-body">
-                                <form method="post" action="{{ route('admin.mobil.update', ['id' => $mobil->id]) }}">
+                                <form method="post" action="{{ route('admin.user.store') }}" enctype="multipart/form-data">
                                     @csrf
-                                    @method('PUT')
                                     <div class="mb-3">
-                                        <label for="exampleInputTipe" class="form-label">Tipe Rumah</label>
-                                        <input type="text" class="form-control" id="exampleInputTipe" name="tipe" placeholder="Tipe Rumah Anda" value="{{ $mobil->type_mobil }}">
-                                        @error('tipe')
+                                        <label for="exampleInputNama" class="form-label">Foto Profil</label>
+                                        <input type="file" class="form-control" id="exampleInputNama" name="profil">
+                                        @error('profil')
                                             <small>{{ $message }}</small>
                                         @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputTahun" class="form-label">Tahun Pembelian</label>
-                                        <input type="text" class="form-control" id="exampleInputTahun" name="tahun" placeholder="Tahun Pembelian" value="{{ $mobil->tahun_pembelian }}">
-                                        @error('tahun')
+                                        <label for="exampleInputNama" class="form-label">Nama</label>
+                                        <input type="text" class="form-control" id="exampleInputNama" name="nama" placeholder="Nama Anda">
+                                        @error('nama')
                                             <small>{{ $message }}</small>
                                         @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputHarga" class="form-label">Harga</label>
-                                        <input type="text" class="form-control" id="exampleInputHarga" name="harga" placeholder="Harga Mobil" value="{{ $mobil->harga_mobil }}">
-                                        @error('harga')
+                                        <label for="exampleInputEmail" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail" name="email" placeholder="Masukkan Email">
+                                        @error('email')
                                             <small>{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                    <div class="mb-4">
+                                        <label for="exampleInputPassword" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="exampleInputPassword" name="password" placeholder="Password Anda">
+                                        @error('password')
+                                            <small>{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="{{ route('admin.user') }}" class="btn btn-primary">Kembali</a>
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                    </div> 
                                 </form>
                             </div>
                         </div>

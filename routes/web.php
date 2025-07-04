@@ -10,6 +10,7 @@ use App\Http\Controllers\MobilController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\KtpController;
 use App\Http\Controllers\AssetController;
+use App\Http\Controllers\EnkripsiController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -24,17 +25,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
+// halaman login
 Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login_proses', [LoginController::class, 'proses_login'])->name('login.proses');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
+// halaman register
 Route::get('/register', [RegisController::class, 'register'])->name('register');
 Route::post('/regis_proses', [RegisController::class, 'proses_regis'])->name('regis.proses');
+
+// halaman lupa password
+Route::get('/forgot_password', [LoginController::class, 'forgot_password'])->name('forgot');
+Route::post('/forgot_proses', [LoginController::class, 'forgot_proses'])->name('forgot.proses');
+Route::get('/forgot_validasi/{token}', [LoginController::class, 'forgot_validasi'])->name('forgot.validasi');
+Route::post('/forgot_validasi_proses', [LoginController::class, 'forgot_validasi_proses'])->name('forgot.validasi_proses');
+
+// belajar enkripsi & deskripsi
+Route::get('/enkripsi', [EnkripsiController::class, 'enkripsi'])->name('enkripsi');
+Route::get('/enkripsi_detail/{params}', [EnkripsiController::class, 'enkripsi_detail'])->name('enkripsi_detail');
+
+Route::get('/locale/{locale}', function ($local) {
+    app()->setlocale($local);
+    session()->put('locale', $local);
+    return redirect()->back();
+})->name('locale');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], function () {
     Route::get('/', [BerandaController::class, 'dashboard'])->name('dashboard')->middleware(['role:admin|writer']);

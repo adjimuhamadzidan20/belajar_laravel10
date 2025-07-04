@@ -34,7 +34,7 @@
                                 <img src="{{ asset('storage/profil_foto/'. $user->image) }}" class="mb-3 img-thumbnail" alt="profil" width="150">
                                 
                                 <div class="mb-3">
-                                    <label class="form-label">Nama User</label>
+                                    <label class="form-label">@lang('user.nama')</label>
                                     <p>{{ $user->name }}</p>
                                 </div>
                                  <div class="mb-3">
@@ -51,9 +51,9 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Tipe Rumah</th>
-                                                <th>Harga Rumah</th>
-                                                <th>Lokasi Rumah</th>
+                                                <th>@lang('user.type_rumah')</th>
+                                                <th>@lang('user.harga_rumah')</th>
+                                                <th>@lang('user.lokasi_rumah')</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -67,6 +67,10 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+                                </div>
+
+                                <div class="mt-4">
+                                    <a href="{{ route('admin.user') }}" class="btn btn-primary">Kembali</a>
                                 </div>
                             </div>
                         </div>

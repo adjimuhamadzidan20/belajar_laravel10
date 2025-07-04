@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Asset;
 use Illuminate\Support\Facades\Validator;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class AssetController extends Controller
 {
@@ -19,12 +20,19 @@ class AssetController extends Controller
         }
 
         $asset = $data->get();
-        return view('asset', ['asset' => $asset, 'request' => $request]);
+
+        // export pdf
+        if ($request->get('export') == 'pdf') {
+            $pdf = Pdf::loadView('pdf.data_asset', ['asset' => $asset]);
+            return $pdf->download('Data_asset.pdf');
+        }
+
+        return view('data_asset.asset', ['asset' => $asset, 'request' => $request]);
     }
 
     public function create()
     {
-        return view('create_asset');
+        return view('data_asset.create_asset');
     }
 
     public function store(Request $request)
@@ -49,7 +57,7 @@ class AssetController extends Controller
     public function edit($id)
     {
         $data = Asset::find($id);
-        return view('edit_asset', ['asset' => $data]);
+        return view('data_asset.edit_asset', ['asset' => $data]);
     }
 
     public function update(Request $request, $id)
